@@ -12,10 +12,6 @@ const h1Container = document.querySelector('.h1-div')
 
 
 
-
-
-
-
 //Creating 16x16 grid container
 function gridFiller(col , rows) {
     for(let i = 0;i < (col * rows); i++) {
