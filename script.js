@@ -242,7 +242,6 @@ function reSize() {
         if(user === null || user < 1 || user > 100){
             reSet();
             gridFiller(16,16);
-            wheel();
             blackColor();
             grayColor();
             rgbColor();
@@ -251,7 +250,6 @@ function reSize() {
         } else { 
             reSet();
             gridFiller(user,user);
-            wheel();
             blackColor();
             grayColor();
             rgbColor();
@@ -260,6 +258,7 @@ function reSize() {
         }
     })
     buttonsContainer.appendChild(btnSize, btnRGB.nextSibling).classList.add('btn')
+
 }
 reSize()
 
