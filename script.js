@@ -5,16 +5,17 @@ const btnGray = document.createElement('button')
 const btnRGB = document.createElement('button')
 const btnErase = document.createElement('button')
 const btnSize = document.createElement('button')
-const btnPick = document.createElement('button')
+const colors = document.querySelector('#colors')
 const buttonsContainer = document.querySelector('.buttons')
 const h1Container = document.querySelector('.h1-div')
+buttonsContainer.insertBefore(colors, buttonsContainer.firstChild)
 
 
 
 
 //Creating 16x16 grid container
 function gridFiller(col , rows) {
-    for(let i = 0;i < (col * rows); i++) {
+    for(let i = 0; i < (col * rows); i++) {
         const div = document.createElement('div');
         div.classList.add('square')
         div.style.backgroundColor = '#fff'
@@ -31,42 +32,33 @@ gridFiller(16,16)
 
 
 //Creating a color Picking wheel
-function wheel(){
-    const colorWheel = document.createElement('input')
+function color() {
     const squares = gridContainer.querySelectorAll('.square')
-    colorWheel.setAttribute('type', 'color')
-    colorWheel.style.height = '100%'
-    colorWheel.style.width = '100%'
-    btnPick.textContent = 'Pick a color :'
-    btnPick.style.fontFamily = 'Comic Neue, cursive'
-    btnPick.style.fontSize = '2em'
-    btnPick.style.width = '100%'
-    btnPick.style.height = '100%'
-    btnPick.backgroundColor = 'rbg(239, 239,239)'
-    buttonsContainer.appendChild(btnPick)
-    buttonsContainer.appendChild(colorWheel)
-  
+    colors.style.fontFamily = 'Comic Neue, cursive'
+    colors.style.fontSize = '2em'
+    colors.style.width = '100%'
+    colors.style.height = '100%'
+    colors.backgroundColor = 'rbg(239, 239,239)'
     
-    
-    colorWheel.addEventListener('mouseover', () => {
-        colorWheel.style.cursor = 'pointer'
+    colors.addEventListener('mouseover', () => {
+        colors.style.cursor = 'pointer'
     })
     
-    colorWheel.addEventListener('change', () => {
+    colors.addEventListener('change', () => {
         
         squares.forEach(square => square.addEventListener('mouseover', ()=> {
-                console.log(square)
-                square.style.backgroundColor = colorWheel.value;
+               
+                square.style.backgroundColor = colors.value;
             
         }))
-    })  
+    }) 
+    colors.classList.add('btn')
+    
+    
 
     
 }
-wheel();
-
-
-
+color();
 
 //Creating and appending Black button to button container
 function blackColor() { 
@@ -213,8 +205,14 @@ function reSet() {
 
 
 
+
+
+
+
+
 //Reseting and resizing GRID container
 function reSize() {
+    //Styling
     btnSize.textContent = 'RESET'
     btnSize.style.height = '100%'
     btnSize.style.fontFamily = 'Comic Neue, cursive'
@@ -222,7 +220,7 @@ function reSize() {
     btnSize.style.width = '100%'
     btnSize.style.border = '1px solid black'
     
-    
+    //Hover effects
     btnSize.addEventListener('mouseover', () => {
         btnSize.style.background = 'linear-gradient(90deg, #333333, #dd1818)'
         btnSize.style.color = 'white'
@@ -236,7 +234,7 @@ function reSize() {
 
    
     
-    
+    //Functionality
     btnSize.addEventListener('click', () => {
         let user = prompt('CHOOSE YOUR GRID SIZE')
         if(user === null || user < 1 || user > 100){
@@ -246,6 +244,7 @@ function reSize() {
             grayColor();
             rgbColor();
             erase();
+            color()
             buttonsContainer.appendChild(btnSize);
         } else { 
             reSet();
@@ -254,11 +253,16 @@ function reSize() {
             grayColor();
             rgbColor();
             erase();
+            color()
             buttonsContainer.appendChild(btnSize);
+           
+            
         }
     })
     buttonsContainer.appendChild(btnSize, btnRGB.nextSibling).classList.add('btn')
 
 }
 reSize()
+
+
 
