@@ -1,5 +1,7 @@
 // Creating main variables
 const gridContainer = document.getElementById('grid-container')
+const h1 = document.createElement('h1')
+const section = document.querySelector('.section')
 const btnBlack = document.createElement('button')
 const btnGray = document.createElement('button')
 const btnRGB = document.createElement('button')
@@ -7,8 +9,10 @@ const btnErase = document.createElement('button')
 const btnSize = document.createElement('button')
 const colors = document.querySelector('#colors')
 const buttonsContainer = document.querySelector('.buttons')
-const h1Container = document.querySelector('.h1-div')
+// const h1Container = document.querySelector('.h1-div')
 buttonsContainer.insertBefore(colors, buttonsContainer.firstChild)
+h1.textContent='Etche-a-sketch';
+section.appendChild(h1)
 
 
 
@@ -202,11 +206,6 @@ function reSet() {
     })
        
 }
-
-
-
-
-
 
 
 
